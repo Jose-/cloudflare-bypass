@@ -260,6 +260,7 @@ class cloudflare {
 		// take out any source of javascript comment code - #JS Comment Fix
 		$script  = preg_replace("/'[^']+'/", "", $script);
 		// evaluate PHP script
+		$script = str_replace('f.action+=location.hash;', '', $script);
 		eval($script);
 		// if cloudflare answer has been found, store it 
 		if(is_numeric($answer)) {
