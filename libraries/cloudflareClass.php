@@ -242,8 +242,8 @@ class cloudflare {
 		$script  = substr($response, strpos($response, 'var s,t,o,p,b,r,e,a,k,i,n,g,f,') + mb_strlen('var s,t,o,p,b,r,e,a,k,i,n,g,f,', 'utf8'));
 		$varname = trim(substr($script, 0, strpos($script, '=')));
 		$script  = substr($script, strpos($script, $varname));
-		// removing form submission event
-		$script  = substr($script, 0, strpos($script, 'f.submit()'));
+		// removing form submission event		
+		$script  = substr($script, 0, strpos($script, 'f.action += location.hash'));
 		// structuring javascript code for PHP conversion
 		$script  = str_replace(array('t.length', 'a.value'), array($siteLen, '$answer'), $script);
 		$script  = str_replace(array("\n", " "), "", $script);
